@@ -11,12 +11,46 @@ import { DISHES } from "../shared/dishes";
 const MenuNavigator = createStackNavigator(
   {
     Menu: { screen: Menu },
-    DishDetail: { screen: DishDetail },
-    About: { screen: About },
-    Contact: { screen: Contact }
+    DishDetail: { screen: DishDetail }
   },
   {
     initialRouteName: "Menu",
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: "#512DA8"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        color: "#fff"
+      }
+    }
+  }
+);
+
+const AboutNavigator = createStackNavigator(
+  {
+    About: { screen: About }
+  },
+  {
+    initialRouteName: "About",
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: "#512DA8"
+      },
+      headerTintColor: "#fff",
+      headerTitleStyle: {
+        color: "#fff"
+      }
+    }
+  }
+);
+
+const ContactNavigator = createStackNavigator(
+  {
+    Contact: { screen: Contact }
+  },
+  {
+    initialRouteName: "Contact",
     navigationOptions: {
       headerStyle: {
         backgroundColor: "#512DA8"
