@@ -31,7 +31,7 @@ class About extends Component {
   }
 
   static navigationOptions = {
-    title: "About"
+    title: "About Us"
   };
 
   render() {
