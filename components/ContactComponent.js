@@ -5,7 +5,7 @@ import { Card } from "react-native-elements";
 function Contact() {
   return (
     <ScrollView>
-      <Card>
+      <Card title="Contact Information">
         <Text>121, Clear Water Bay Road</Text>
         <Text>Clear Water Bay, Kowloon</Text>
         <Text>HONG KONG</Text>

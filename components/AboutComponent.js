@@ -6,7 +6,7 @@ import { ListItem } from "react-native-elements";
 
 function History() {
   return (
-    <Card featuredTitle="Our History">
+    <Card title="Our History">
       <Text>
         Started in 2010, Ristorante con Fusion quickly established itself as a
         culinary icon par excellence in Hong Kong. With its unique brand of
@@ -44,7 +44,7 @@ class About extends Component {
     return (
       <ScrollView>
         <History />
-        <Card featuredTitle="Corporate Leadership">
+        <Card title="Corporate Leadership">
           <FlatList
             data={this.state.leaders}
             renderItem={renderLeader}
