@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import Home from "./HomeComponent";
 import Menu from "./MenuComponent";
 import DishDetail from "./DishDetailComponent";
+import Contact from "./ContactComponent";
+import About from "./AboutComponent";
 import { View, Platform } from "react-native";
 import { createStackNavigator, createDrawerNavigator } from "react-navigation";
 import { DISHES } from "../shared/dishes";
@@ -9,7 +11,9 @@ import { DISHES } from "../shared/dishes";
 const MenuNavigator = createStackNavigator(
   {
     Menu: { screen: Menu },
-    DishDetail: { screen: DishDetail }
+    DishDetail: { screen: DishDetail },
+    About: { screen: About },
+    Contact: { screen: Contact }
   },
   {
     initialRouteName: "Menu",
@@ -56,6 +60,20 @@ const MainNavigator = createDrawerNavigator(
       navigationOptions: {
         title: "Menu",
         drawerLabel: "Menu"
+      }
+    },
+    About: {
+      screen: AboutNavigator,
+      navigationOptions: {
+        title: "About",
+        drawerLabel: "About Us"
+      }
+    },
+    Contact: {
+      screen: ContactNavigator,
+      navigationOptions: {
+        title: "Contact",
+        drawerLabel: "Contact Us"
       }
     }
   },
