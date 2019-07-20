@@ -4,11 +4,8 @@ import {
   View,
   StyleSheet,
   ScrollView,
-  Picker,
-  Switch,
   Button,
   FlatList,
-  TextInput,
   Modal
 } from "react-native";
 import { Card, Icon, Rating, Input } from "react-native-elements";
@@ -25,7 +22,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => ({
-  postFavorite: dishId => dispatch(postFavorite(dishId))
+  postFavorite: dishId => dispatch(postFavorite(dishId)),
+  postComment: (dishId, author, comment, rating, id) =>
+    dispatch(postComment(dishId, author, comment, rating, id))
 });
 
 function RenderDish(props) {
@@ -103,8 +102,8 @@ class DishDetail extends Component {
 
     this.state = {
       rating: 5,
-      author: [],
-      comment: [],
+      author: "",
+      comment: "",
       showModal: false
     };
   }
@@ -112,10 +111,6 @@ class DishDetail extends Component {
   markFavorite(dishId) {
     this.props.postFavorite(dishId);
   }
-
-  // onShowModal(dishId) {
-  //   this.props.postComment(dishId);
-  // }
 
   static navigationOptions = {
     title: "Dish Details"
@@ -125,10 +120,18 @@ class DishDetail extends Component {
     this.setState({ showModal: !this.state.showModal });
   }
 
-  handleComment() {
-    console.log(JSON.stringify(this.state));
+  handleComment = dishId => {
+    const id = this.props.comments.comments.length;
+    console.log(id);
     this.toggleModal();
-  }
+    this.props.postComment(
+      dishId,
+      this.state.author,
+      this.state.comment,
+      this.state.rating,
+      id
+    );
+  };
 
   resetForm() {
     this.setState({
@@ -187,7 +190,7 @@ class DishDetail extends Component {
             <View style={{ marginTop: 10 }}>
               <Button
                 onPress={() => {
-                  this.handleComment();
+                  this.handleComment(dishId);
                   this.resetForm();
                 }}
                 color="#512DA8"
