@@ -74,9 +74,9 @@ function RenderComments(props) {
       <View key={index} style={{ margin: 10 }}>
         <Text style={{ fontSize: 14 }}>{item.comment}</Text>
         <Rating
+          style={{ alignSelf: "flex-start" }}
           count={5}
-          showRating
-          startingValue={item.rating}
+          startingValue={+item.rating}
           imageSize={12}
           readonly
         />
