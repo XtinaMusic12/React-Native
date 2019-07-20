@@ -4,7 +4,6 @@ import {
   View,
   ScrollView,
   StyleSheet,
-  ScrollView,
   Picker,
   Switch,
   Button,
