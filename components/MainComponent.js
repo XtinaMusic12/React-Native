@@ -19,7 +19,6 @@ import {
   DrawerItems,
   SafeAreaView
 } from "react-navigation";
-import { DISHES } from "../shared/dishes";
 import { Icon } from "react-native-elements";
 import { connect } from "react-redux";
 import {
@@ -133,15 +132,14 @@ const ReservationNavigator = createStackNavigator(
     Reservation: { screen: Reservation }
   },
   {
-    initialRouteName: "Contact",
     navigationOptions: ({ navigation }) => ({
       headerStyle: {
         backgroundColor: "#512DA8"
       },
-      headerTintColor: "#fff",
       headerTitleStyle: {
         color: "#fff"
       },
+      headerTintColor: "#fff",
       headerLeft: (
         <Icon
           name="menu"
