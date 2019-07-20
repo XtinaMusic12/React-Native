@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import {
   Text,
   View,
-  ScrollView,
   StyleSheet,
+  ScrollView,
   Picker,
   Switch,
   Button,
@@ -31,21 +31,17 @@ class Reservation extends Component {
     this.setState({ showModal: !this.state.showModal });
   }
 
+  handleReservation() {
+    console.log(JSON.stringify(this.state));
+    this.toggleModal();
+  }
+
   resetForm() {
     this.setState({
       guests: 1,
       smoking: false,
       date: "",
       showModal: false
-    });
-  }
-
-  handleReservation() {
-    console.log(JSON.stringify(this.state));
-    this.setState({
-      guests: 1,
-      smoking: false,
-      date: ""
     });
   }
 
