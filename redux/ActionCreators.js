@@ -174,14 +174,12 @@ export const postComment = (
   author,
   date
 ) => dispatch => {
-  console.log(date);
   setTimeout(() => {
     dispatch(addComment(id, dishId, rating, comment, author, date));
   }, 2000);
 };
 
 export const addComment = (id, dishId, rating, comment, author, date) => {
-  console.log(date);
   return {
     type: ActionTypes.ADD_COMMENT,
     payload: { id, dishId, rating, comment, author, date }
