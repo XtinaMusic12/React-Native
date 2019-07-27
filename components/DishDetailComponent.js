@@ -103,7 +103,6 @@ function RenderDish(props) {
                   : props.onMarkFavorite()
               }
             />
-            {/* <View style={styles.cardItem}> */}
             <Icon
               raised
               reverse
@@ -112,7 +111,6 @@ function RenderDish(props) {
               color="#512DA8"
               onPress={() => props.onShowModal()}
             />
-            {/* </View> */}
           </View>
         </Card>
       </Animatable.View>
