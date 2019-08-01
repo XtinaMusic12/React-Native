@@ -29,13 +29,13 @@ class Contact extends Component {
             <Text>Fax: +852 8765 4321</Text>
             <Text>Email:confusion@food.net</Text>
             <Button
-              title="Send Email"
+              title=" Send Email"
               buttonStyle={{ backgroundColor: "#512DA8" }}
               icon={
                 <Icon name="envelope-o" type="font-awesome" color="white" />
               }
               onPress={this.sendMail}
-            />{" "}
+            />
           </Card>
         </Animatable.View>
       </ScrollView>
