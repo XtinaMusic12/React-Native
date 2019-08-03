@@ -11,7 +11,9 @@ import {
 } from "react-native";
 import DatePicker from "react-native-datepicker";
 import * as Animatable from "react-native-animatable";
-import { Permissions, Notifications } from "expo";
+import { Notifications, Permissions, Calendar } from "expo";
+// import * as Permissions from "expo-permissions";
+// import * as Calendar from "expo-calendar";
 
 class Reservation extends Component {
   constructor(props) {
@@ -32,6 +34,18 @@ class Reservation extends Component {
   toggleModal() {
     this.setState({ showModal: !this.state.showModal });
   }
+
+  obtainCalendarPermission = async () => {
+    const calendarPermission = await Permissions.askAsync(Permissions.CALENDAR);
+
+    if (calendarPermission.status !== "granted") {
+      calendarPermission = await Permissions.askAsync(Permissions.CALENDAR);
+      if (calendarPermission.status !== "granted") {
+        Alert.alert("Permission not granted to access the calendar.");
+      }
+    }
+    return calendarPermission;
+  };
 
   handleReservation() {
     Alert.alert(
@@ -54,6 +68,7 @@ class Reservation extends Component {
           text: "OK",
           onPress: () => {
             this.presentLocalNotification(this.state.date);
+            this.addReservationToCalendar(this.state.date);
             this.resetForm();
           }
         }
@@ -61,6 +76,21 @@ class Reservation extends Component {
       { cancelable: false }
     );
     console.log(JSON.stringify(this.state));
+  }
+
+  async addReservationToCalendar(date) {
+    await this.obtainCalendarPermission();
+
+    const calendarDetails = {
+      title: "Con Fusion Table Reservation",
+      startDate: new Date(Date.parse(date)),
+      endDate: new Date(Date.parse(date) + 7200000),
+      timeZone: "Asia/Hong_Kong",
+      location: "121, Clear Water Bay Road, Clear Water Bay, Kowloon, Hong Kong"
+    };
+    Calendar.createEventAsync(Calendar.DEFAULT, calendarDetails).then(mesg =>
+      console.log("number of events", mesg)
+    );
   }
 
   resetForm() {

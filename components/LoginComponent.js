@@ -186,7 +186,6 @@ class RegisterTab extends Component {
       [{ resize: { width: 400 } }],
       { format: "png" }
     );
-    console.log(processedImage);
     this.setState({ imageUrl: processedImage.uri });
   };
 
